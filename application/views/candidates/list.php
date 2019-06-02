@@ -62,9 +62,9 @@
                                             ?>
                                         "></i>
                                     </a>
-                                    <a data-tooltip="Delete" type="submit" class="btn btn-danger btn-sm">
+                                    <button data-tooltip="Delete" type="submit" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash-alt"></i>
-                                    </a>
+                                    </button>
                                 </form>
                             </td>     
                         </tr>

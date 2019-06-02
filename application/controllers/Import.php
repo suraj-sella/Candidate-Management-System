@@ -3,8 +3,9 @@
   class Import extends CI_Controller {  
     function __construct() {
       parent::__construct();
-      $this->load->database();
+      // $this->load->database();
       $this->load->model('import_model', 'import');
+      $this->load->library('session');
     }      
  
     public function uploadExcel(){
@@ -22,7 +23,6 @@
         $this->load->library('upload', $config);
         $this->upload->initialize($config);            
         if (!$this->upload->do_upload('uploadFile')) {
-          print_r($this->upload->display_errors());die();
           $error = array('error' => $this->upload->display_errors());
         } else {
           $data = array('upload_data' => $this->upload->data());
@@ -71,16 +71,19 @@
             }               
             $result = $this->import->importdata($inserdata);   
             if($result){
-              echo "Imported successfully";
+              $this->session->set_flashdata('flashSuccess', 'Imported successfully');
               redirect(base_url('candidates'));
             }else{
-              echo "ERROR !";
+              $this->session->set_flashdata('flashError', 'Could Not Insert Records!');
+              redirect(base_url('import/uploadExcel'));
             }             
           } catch (Exception $e) {
-            echo 'Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME) . '": ' .$e->getMessage();
+            $this->session->set_flashdata('flashError', 'Error Loading File "' . pathinfo($inputFileName, PATHINFO_BASENAME) . '": ' .$e->getMessage());
+            redirect(base_url('import/uploadExcel'));
           }
         }else{
-          echo $error['error'];
+          $this->session->set_flashdata('flashError', $error['error']);
+          redirect(base_url('import/uploadExcel'));
         }
       }
       $this->load->view('includes/header');

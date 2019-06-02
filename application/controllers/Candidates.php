@@ -19,8 +19,14 @@
         }
         public function store(){
             $candidates=new CandidatesModel;
-            $candidates->insert_candidate();
-            redirect(base_url('candidates'));
+            $result = $candidates->insert_candidate();
+            if($result['status']){
+                $this->session->set_flashdata('flashSuccess', 'Inserted Successfully!');
+                redirect(base_url('candidates'));
+            }else{
+                $this->session->set_flashdata('flashError', $result['message']);
+                redirect(base_url('candidates/create'));
+            }
         }
         public function edit($id){
             $candidate = $this->db->get_where('candidates', array('id' => $id))->row();
@@ -30,22 +36,43 @@
         }
         public function update($id){
             $candidates=new CandidatesModel;
-            $candidates->update_candidate($id);
-            redirect(base_url('candidates'));
+            $result = $candidates->update_candidate($id);
+            if($result['status']){
+                $this->session->set_flashdata('flashSuccess', 'Updated Successfully!');
+                redirect(base_url('candidates'));
+            }else{
+                $this->session->set_flashdata('flashError', $result['message']);
+                redirect(base_url('candidates/edit/' . $id));
+            } 
         }
         public function delete($id){
-            $this->db->where('id', $id);
-            $this->db->delete('candidates');
+            $candidates=new CandidatesModel;
+            $result = $candidates->delete_candidate($id);  
+            if($result['status']){
+                $this->session->set_flashdata('flashSuccess', 'Deleted Successfully!');
+            }else{
+                $this->session->set_flashdata('flashError', $result['message']);
+            } 
             redirect(base_url('candidates'));
         }
         public function hide($id){
             $candidates=new CandidatesModel;
-            $candidates->hide_candidate($id);
+            $result = $candidates->hide_candidate($id);
+            if($result['status']){
+                $this->session->set_flashdata('flashSuccess', 'Hidden Successfully!');
+            }else{
+                $this->session->set_flashdata('flashError', $result['message']);
+            }
             redirect(base_url('candidates'));
         }
         public function unhide($id){
             $candidates=new CandidatesModel;
-            $candidates->unhide_candidate($id);
+            $result = $candidates->unhide_candidate($id);
+            if($result['status']){
+                $this->session->set_flashdata('flashSuccess', 'Undone Successfully!');
+            }else{
+                $this->session->set_flashdata('flashError', $result['message']);
+            }
             redirect(base_url('candidates'));
         }
         public function view($id){
