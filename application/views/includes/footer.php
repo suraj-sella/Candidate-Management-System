@@ -1,10 +1,10 @@
             <div class="row">
-                <div class="offset-md-3 col-md-6 text-center">
-                    <p class="footsection">Icons made by
+                <div class="offset-md-2 col-md-8 text-center">
+                    <p class="footsection">Title Icon Made By
                         <a href="https://www.flaticon.com/authors/turkkub" title="turkkub">turkkub</a>
-                        from
+                        From
                         <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-                        is licensed by
+                        Is Licensed By
                         <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
                     </p>
                 </div>
@@ -26,7 +26,7 @@
                 type: 'success',
                 modal: true,
                 killer: true,
-                timeout: 500,
+                timeout: 1000,
                 theme: 'metroui'
             });
             success.show();
