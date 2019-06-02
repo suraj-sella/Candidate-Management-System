@@ -1,0 +1,20 @@
+body{
+    background-color: #4fc6eb1f;
+}
+.headsection{
+    margin: 2rem 0;
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: #0f4e5d;
+    color: white;
+}
+.table .thead-my th{
+    background-color: #0f4e5d;    
+}
+.form{
+    padding: 1rem;
+    border: 3px solid #1d4e5d;
+}
+.hidden{
+    background-color: #f81e0852;
+}
