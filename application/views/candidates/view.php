@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-md-12 text-center">           
         <h2 class='headsection'>
-            <a class="btn btn-success float-left" href="<?php echo base_url('candidates') ?>">
+            <a data-tooltip="Home" class="btn btn-success float-left tooltip-left" href="<?php echo base_url('candidates') ?>">
                 <i class="fas fa-home"></i>
             </a>
             Candidates Management System
-            <a class="btn btn-success float-right" href="<?php echo base_url('import/uploadExcel') ?>">
-                <i class="fas fa-file-export"></i>
+            <a data-tooltip="Import" class="btn btn-success float-right tooltip-right" href="<?php echo base_url('import/uploadExcel') ?>">
+                <i class="fas fa-file-import"></i>
             </a>
         </h2>
     </div>
